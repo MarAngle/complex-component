@@ -8,22 +8,26 @@ const config = {
     }
   },
   // 挂载到具体对象下，可后期模块中更改
-  parseAttributes: function(attributesData: AttributeValue) {
-    const data: Record<PropertyKey, unknown> = {
-      ...attributesData.attributes,
-      ...attributesData.props,
-      style: attributesData.style
+  parseAttributes: function(attributesData?: AttributeValue) {
+    if (attributesData) {
+      const data: Record<PropertyKey, unknown> = {
+        ...attributesData.attributes,
+        ...attributesData.props,
+        style: attributesData.style
+      }
+      for (const funcName in attributesData.on) {
+        data['on' + upperCaseFirstChar(funcName)] = attributesData.on[funcName]
+      }
+      if (attributesData.id.length > 0) {
+        data.id = attributesData.id.join(' ')
+      }
+      if (attributesData.class.length > 0) {
+        data.class = attributesData.class.join(' ')
+      }
+      return data
+    } else {
+      return {}
     }
-    for (const funcName in attributesData.on) {
-      data['on' + upperCaseFirstChar(funcName)] = attributesData.on[funcName]
-    }
-    if (attributesData.id.length > 0) {
-      data.id = attributesData.id
-    }
-    if (attributesData.class.length > 0) {
-      data.class = attributesData.class
-    }
-    return data
   }
 }
 
