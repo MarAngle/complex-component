@@ -1,5 +1,5 @@
 import { upperCaseFirstChar } from "complex-utils"
-import { AttributeValue } from "complex-data"
+import { AttrsValue } from "complex-data"
 
 const config = {
   highText: {
@@ -8,21 +8,21 @@ const config = {
     }
   },
   // 挂载到具体对象下，可后期模块中更改
-  parseAttributes: function(attributesData?: AttributeValue) {
-    if (attributesData) {
+  parseAttrs: function(attrsData?: AttrsValue) {
+    if (attrsData) {
       const data: Record<PropertyKey, unknown> = {
-        ...attributesData.attributes,
-        ...attributesData.props,
-        style: attributesData.style
+        ...attrsData.attrs,
+        ...attrsData.props,
+        style: attrsData.style
       }
-      for (const funcName in attributesData.on) {
-        data['on' + upperCaseFirstChar(funcName)] = attributesData.on[funcName]
+      for (const funcName in attrsData.on) {
+        data['on' + upperCaseFirstChar(funcName)] = attrsData.on[funcName]
       }
-      if (attributesData.id.length > 0) {
-        data.id = attributesData.id.join(' ')
+      if (attrsData.id.length > 0) {
+        data.id = attrsData.id.join(' ')
       }
-      if (attributesData.class.length > 0) {
-        data.class = attributesData.class.join(' ')
+      if (attrsData.class.length > 0) {
+        data.class = attrsData.class.join(' ')
       }
       return data
     } else {
