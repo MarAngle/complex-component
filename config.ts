@@ -7,6 +7,11 @@ const config = {
       color: '#FF4D4F'
     }
   },
+  parseData<D = unknown>(data: undefined | Record<string, undefined | D>, prop: string) {
+    if (data) {
+      return data[prop]
+    }
+  },
   // 挂载到具体对象下，可后期模块中更改
   parseAttrs: function(attrsData?: AttrsValue) {
     if (attrsData) {
