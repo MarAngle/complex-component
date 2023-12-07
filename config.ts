@@ -8,13 +8,13 @@ const config = {
       color: '#FF4D4F'
     }
   },
+  formatStyle(value: number, unit = 'px') {
+    return value + unit
+  },
   parseData<D = unknown>(data: undefined | Record<string, undefined | D>, prop: string) {
     if (data) {
       return data[prop]
     }
-  },
-  formatStyle(value: number, unit = 'px') {
-    return value + unit
   },
   parseNumberByComma(data: number | string, comma?: string, decimal?: boolean, list?: boolean) {
     let decimalStr = ''
