@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import { findTargetInStr } from "complex-utils"
-import config from "../config"
+import config from "../../config"
 
 export default defineComponent({
   name: 'ComplexHighText',
