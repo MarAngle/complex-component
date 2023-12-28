@@ -1,6 +1,9 @@
 ### ToDo
 - 简化TableView，相同的参数实现基础的table，主要目标是优化性能
 
+### 4.0.12
+- 升级依赖，适配dataConfig，删除formatStyle
+
 ### 4.0.11
 - 升级依赖，适配formatConfig
 

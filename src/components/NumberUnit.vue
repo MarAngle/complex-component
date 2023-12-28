@@ -42,16 +42,16 @@ export default defineComponent({
           unitStyle.color = this.unitOption.color
         }
         if (this.unitOption.fontSize) {
-          unitStyle.fontSize = config.formatStyle(this.unitOption.fontSize)
+          unitStyle.fontSize = config.data.formatPixel(this.unitOption.fontSize)
         }
         if (this.unitOption.lineHeight) {
-          unitStyle.lineHeight = config.formatStyle(this.unitOption.lineHeight)
+          unitStyle.lineHeight = config.data.formatPixel(this.unitOption.lineHeight)
         }
         if (this.unitOption.top) {
-          unitStyle.transform = `translateY(${config.formatStyle(this.unitOption.top)})`
+          unitStyle.transform = `translateY(${config.data.formatPixel(this.unitOption.top)})`
         }
         if (this.unitOption.left) {
-          unitStyle.marginLeft = config.formatStyle(this.unitOption.left)
+          unitStyle.marginLeft = config.data.formatPixel(this.unitOption.left)
         }
       }
       return unitStyle

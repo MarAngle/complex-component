@@ -1,16 +1,9 @@
 import { upperCaseFirstChar, parseNum } from "complex-utils"
 import { AttrsValue } from "complex-data"
+import dataConfig from 'complex-data/config'
 
 const config = {
-  animateTime: 800,
-  highText: {
-    style: {
-      color: '#FF4D4F'
-    }
-  },
-  formatStyle(value: number, unit = 'px') {
-    return value + unit
-  },
+  data: dataConfig,
   parseData<D = unknown>(data: undefined | Record<string, undefined | D>, prop: string) {
     if (data) {
       return data[prop]
@@ -61,7 +54,13 @@ const config = {
     } else {
       return {}
     }
-  }
+  },
+  animateTime: 800,
+  highText: {
+    style: {
+      color: '#FF4D4F'
+    }
+  },
 }
 
 export default config
