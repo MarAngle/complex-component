@@ -5,12 +5,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { PropType, defineComponent } from "vue"
 import { findTargetInStr } from "complex-utils"
 import config from "../../config"
+import { HighTextProps } from "../type"
 
 export default defineComponent({
-  name: 'ComplexHighText',
+  name: 'HighText',
   data () {
     const list: {
       data: string,
@@ -29,14 +30,14 @@ export default defineComponent({
       required: true
     },
     defaultStyle: {
-      type: Object,
+      type: Object as PropType<HighTextProps['defaultStyle']>,
       required: false,
       default: () => {
         return {}
       }
     },
     highStyle: {
-      type: Object,
+      type: Object as PropType<HighTextProps['highStyle']>,
       required: false,
       default: () => {
         return config.highText.style
@@ -44,8 +45,7 @@ export default defineComponent({
     },
     limitNum: {
       type: Number,
-      required: false,
-      default: undefined
+      required: false
     },
     limitCase: {
       type: Boolean,

@@ -1,6 +1,3 @@
-<style lang="less" scoped>
-</style>
-
 <template>
   <CommaNumber class="number-change" :data="currentData" :color="color" :decimal="decimal > 0" :comma="comma" :format="format" />
 </template>
@@ -8,8 +5,9 @@
 <script lang="ts">
 import { getNum } from 'complex-utils'
 import { defineComponent, PropType } from 'vue'
-import CommaNumber, { formatFunctionType } from './CommaNumber.vue'
+import CommaNumber from './CommaNumber.vue'
 import config from '../../config'
+import { NumberChangeProps } from '../type'
 
 export default defineComponent({
   name: 'NumberChange',
@@ -43,9 +41,8 @@ export default defineComponent({
       default: ','
     },
     format: {
-      type: Function as PropType<formatFunctionType>,
-      required: false,
-      default: undefined
+      type: Function as PropType<NumberChangeProps['format']>,
+      required: false
     }
   },
   data() {

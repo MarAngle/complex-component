@@ -1,6 +1,4 @@
-<style lang="less" scoped>
-@import '@/style/index.less';
-
+<style scoped>
 .number-area{
   display: flex;
   flex-direction: row;
@@ -19,8 +17,8 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import NumberChange from './NumberChange.vue'
-import NumberUnit, { unitOption } from './NumberUnit.vue'
-import { formatFunctionType } from './CommaNumber.vue'
+import NumberUnit from './NumberUnit.vue'
+import { NumberAreaProps } from '../type'
 
 export default defineComponent({
   name: 'NumberArea',
@@ -39,8 +37,7 @@ export default defineComponent({
     },
     time: {
       type: Number,
-      required: false,
-      default: 800
+      required: false
     },
     decimal: {
       type: Number,
@@ -53,16 +50,15 @@ export default defineComponent({
       default: ','
     },
     format: {
-      type: Function as PropType<formatFunctionType>,
-      required: false,
-      default: undefined
+      type: Function as PropType<NumberAreaProps['format']>,
+      required: false
     },
     unit: {
       type: String,
       required: true
     },
     unitOption: {
-      type: Object as PropType<unitOption>,
+      type: Object as PropType<NumberAreaProps['unitOption']>,
       required: false,
       default: undefined
     }

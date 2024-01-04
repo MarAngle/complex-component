@@ -1,4 +1,4 @@
-<style lang="less" scoped>
+<style scoped>
 
 </style>
 <template>
@@ -9,7 +9,6 @@
     :accept="accept"
     :multiple="multiple"
     :disabled="disabled"
-    :placeholder="placeholder"
     @change="onChange"
   />
 </template>
@@ -50,11 +49,6 @@ export default defineComponent({
       type: Boolean,
       required: false,
       default: false
-    },
-    placeholder: {
-      type: String,
-      required: false,
-      default: ''
     },
     size: { // MB
       type: Number,

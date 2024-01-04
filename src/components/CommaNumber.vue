@@ -6,9 +6,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import { CommaNumberProps } from '../type'
 import config from '../../config'
-
-export type formatFunctionType = (n: number | string) => (number | string)
 
 export default defineComponent({
   name: 'CommaNumber',
@@ -32,9 +31,8 @@ export default defineComponent({
       default: ','
     },
     format: {
-      type: Function as PropType<formatFunctionType>,
-      required: false,
-      default: undefined
+      type: Function as PropType<CommaNumberProps['format']>,
+      required: false
     }
   },
   data() {

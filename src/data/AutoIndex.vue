@@ -8,20 +8,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
-import { PaginationData } from 'complex-data'
+import { PropType, defineComponent } from "vue"
+import { AutoIndexProps } from "../type"
 
 export default defineComponent({
-  name: 'ComplexAutoIndex',
+  name: 'AutoIndex',
   props: {
     index: {
       type: Number,
       required: true
     },
     pagination: {
-      type: PaginationData,
-      required: false,
-      default: null
+      type: Object as PropType<AutoIndexProps['pagination']>,
+      required: false
     }
   },
   computed: {

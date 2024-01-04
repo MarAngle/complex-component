@@ -1,6 +1,6 @@
 {
   "name": "complex-component",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "a complex component",
   "main": "index.ts",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/MarAngle/complex-component.git"
   },
   "dependencies": {
-    "complex-data": "4.1.0 - 4.1.99",
+    "complex-data": "4.1.5 - 4.1.99",
     "complex-plugin": "4.1.0 - 4.1.99"
   },
   "devDependencies": {

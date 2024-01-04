@@ -1,4 +1,4 @@
-<style lang="less" scoped>
+<style scoped>
 
 .number-unit{
   display: inline-block;
@@ -11,15 +11,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import { NumberUnitProps } from '../type'
 import config from '../../config'
-
-export type unitOption = {
-  fontSize?: number
-  lineHeight?: number
-  top?: number
-  left?: number
-  color?: string
-}
 
 export default defineComponent({
   name: 'NumberUnit',
@@ -28,30 +21,29 @@ export default defineComponent({
       type: String,
       required: true
     },
-    unitOption: {
-      type: Object as PropType<unitOption>,
-      required: false,
-      default: undefined
+    option: {
+      type: Object as PropType<NumberUnitProps['option']>,
+      required: false
     }
   },
   computed: {
     unitStyle() {
       const unitStyle: Record<string, string> = {}
-      if (this.unitOption) {
-        if (this.unitOption.color) {
-          unitStyle.color = this.unitOption.color
+      if (this.option) {
+        if (this.option.color) {
+          unitStyle.color = this.option.color
         }
-        if (this.unitOption.fontSize) {
-          unitStyle.fontSize = config.data.formatPixel(this.unitOption.fontSize)
+        if (this.option.fontSize) {
+          unitStyle.fontSize = config.data.formatPixel(this.option.fontSize)
         }
-        if (this.unitOption.lineHeight) {
-          unitStyle.lineHeight = config.data.formatPixel(this.unitOption.lineHeight)
+        if (this.option.lineHeight) {
+          unitStyle.lineHeight = config.data.formatPixel(this.option.lineHeight)
         }
-        if (this.unitOption.top) {
-          unitStyle.transform = `translateY(${config.data.formatPixel(this.unitOption.top)})`
+        if (this.option.top) {
+          unitStyle.transform = `translateY(${config.data.formatPixel(this.option.top)})`
         }
-        if (this.unitOption.left) {
-          unitStyle.marginLeft = config.data.formatPixel(this.unitOption.left)
+        if (this.option.left) {
+          unitStyle.marginLeft = config.data.formatPixel(this.option.left)
         }
       }
       return unitStyle
