@@ -42,12 +42,12 @@ export interface HighTextProps {
   limitCase?: boolean
 }
 
-export interface InputFileProps {
+export interface FileProps {
   accept?: string
-  multiple?: boolean
   max?: number
   min?: number
-  append?: boolean
+  multiple?: boolean
+  multipleAppend?: boolean
   disabled?: boolean
   size?: number
 }

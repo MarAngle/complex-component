@@ -3,7 +3,7 @@
 </style>
 <template>
   <input
-    class="complex-input-file"
+    class="complex-file"
     ref="file"
     type="file"
     :accept="accept"
@@ -18,17 +18,12 @@ import { defineComponent } from 'vue'
 import { notice } from 'complex-plugin'
 
 export default defineComponent({
-  name: 'InputFile',
+  name: 'FileView',
   props: {
     accept: {
       type: String,
       required: false,
       default: ''
-    },
-    multiple: {
-      type: Boolean,
-      required: false,
-      default: false
     },
     max: {
       type: Number,
@@ -40,7 +35,12 @@ export default defineComponent({
       required: false,
       default: 0
     },
-    append: {
+    multiple: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    multipleAppend: {
       type: Boolean,
       required: false,
       default: true
@@ -108,8 +108,8 @@ export default defineComponent({
     },
     onChange(e: Event) {
       const input = (e.target as HTMLInputElement)
-      const fileList = input.files!
-      if (fileList.length > 0) {
+      const fileList = input.files
+      if (fileList && fileList.length > 0) {
         if (!this.multiple) {
           const file = fileList[0]
           const next = this.check(file)
@@ -117,7 +117,7 @@ export default defineComponent({
             this.$emit('file', file)
           }
         } else {
-          const currentFileList = []
+          const currentFileList: File[] = []
           let currentNum = fileList.length
           if (this.max && currentNum > this.max) {
             currentNum = this.max
@@ -131,7 +131,7 @@ export default defineComponent({
           }
           if (currentFileList.length > 0 && currentFileList.length !== currentNum) {
             // 存在不合格数据
-            if (this.append) {
+            if (this.multipleAppend) {
               this.$emit('file', currentFileList)
             }
           } else {
