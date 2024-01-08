@@ -22,8 +22,7 @@ export default defineComponent({
   props: {
     accept: {
       type: String,
-      required: false,
-      default: ''
+      required: false
     },
     max: {
       type: Number,
@@ -57,8 +56,7 @@ export default defineComponent({
     }
   },
   methods: {
-    checkAccept(file: File, accept: string) {
-      let isAccept = false
+    checkAccept(file: File, accept?: string) {
       if (accept) {
         const fileType = file.type
         const namelist = file.name.split('.')
@@ -69,42 +67,37 @@ export default defineComponent({
           if (acceptItem) {
             if (acceptItem.indexOf('.') === 0) { // 文件后缀形式判断
               if (acceptItem === fileName) {
-                isAccept = true
-                break
+                return true
               }
             } else { // 文件type判断=暂时只支持image/*...类型
               if (acceptItem === fileType) {
-                isAccept = true
-                break
+                return true
               } else if (fileType && acceptItem.indexOf('*') > -1) {
                 acceptItem = acceptItem.split('*').join('')
                 if (fileType.indexOf(acceptItem) > -1) {
-                  isAccept = true
-                  break
+                  return true
                 }
               }
             }
           }
         }
+        return false
       } else {
-        isAccept = true
+        return true
       }
-      return isAccept
     },
     check(file: File) {
-      let next = true
-      const isAccept = this.checkAccept(file, this.accept)
-      if (!isAccept) {
-        next = false
-        notice.showMsg( `文件格式不匹配!`, 'error')
+      if (!this.checkAccept(file, this.accept)) {
+        notice.showMsg(`文件格式不匹配!`, 'error')
+        return false
       } else if (this.size) {
         const currentSize = file.size / 1024 / 1024
         if (currentSize > this.size) {
-          next = false
           notice.showMsg( `文件大小不能大于${this.size}MB!`, 'error')
+          return false
         }
       }
-      return next
+      return true
     },
     onChange(e: Event) {
       const input = (e.target as HTMLInputElement)
@@ -112,8 +105,7 @@ export default defineComponent({
       if (fileList && fileList.length > 0) {
         if (!this.multiple) {
           const file = fileList[0]
-          const next = this.check(file)
-          if (next) {
+          if (this.check(file)) {
             this.$emit('file', file)
           }
         } else {
@@ -124,8 +116,7 @@ export default defineComponent({
           }
           for (let n = 0; n < currentNum; n++) {
             const file = fileList[n]
-            const next = this.check(file)
-            if (next) {
+            if (this.check(file)) {
               currentFileList.push(file)
             }
           }
