@@ -1,5 +1,6 @@
-import { PaginationData } from "complex-data"
 import { StyleValue } from "vue"
+import { PaginationData } from "complex-data"
+import { DefaultEditFileOption } from "complex-data/src/dictionary/DefaultEditFile"
 
 export interface CommaNumberProps {
   data: number
@@ -44,12 +45,9 @@ export interface HighTextProps {
 
 export interface FileProps {
   accept?: string
-  max?: number
-  min?: number
-  multiple?: boolean
-  multipleAppend?: boolean
-  disabled?: boolean
   size?: number
+  disabled?: boolean
+  multiple?: boolean | DefaultEditFileOption['multiple']
 }
 
 export interface ShowValueProps {

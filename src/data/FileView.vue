@@ -7,15 +7,16 @@
     ref="file"
     type="file"
     :accept="accept"
-    :multiple="multiple"
+    :multiple="!!currentMultiple"
     :disabled="disabled"
     @change="onChange"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { PropType, defineComponent } from 'vue'
 import { notice } from 'complex-plugin'
+import { FileProps } from '../type'
 
 export default defineComponent({
   name: 'FileView',
@@ -24,25 +25,9 @@ export default defineComponent({
       type: String,
       required: false
     },
-    max: {
-      type: Number,
-      required: false,
-      default: 0
-    },
-    min: {
-      type: Number,
-      required: false,
-      default: 0
-    },
     multiple: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    multipleAppend: {
-      type: Boolean,
-      required: false,
-      default: true
+      type: Object as PropType<FileProps['multiple']>,
+      required: false
     },
     disabled: {
       type: Boolean,
@@ -53,6 +38,25 @@ export default defineComponent({
       type: Number,
       required: false,
       default: 0
+    }
+  },
+  computed: {
+    currentMultiple() {
+      if (!this.multiple) {
+        return false
+      } else if (this.multiple === true) {
+        return {
+          min: 0,
+          max: 0,
+          append: false
+        }
+      } else {
+        return {
+          min: this.multiple.min || 0,
+          max: this.multiple.max || 0,
+          append: this.multiple.append || false
+        }
+      }
     }
   },
   methods: {
@@ -103,7 +107,7 @@ export default defineComponent({
       const input = (e.target as HTMLInputElement)
       const fileList = input.files
       if (fileList && fileList.length > 0) {
-        if (!this.multiple) {
+        if (!this.currentMultiple) {
           const file = fileList[0]
           if (this.check(file)) {
             this.$emit('file', file)
@@ -111,8 +115,8 @@ export default defineComponent({
         } else {
           const currentFileList: File[] = []
           let currentNum = fileList.length
-          if (this.max && currentNum > this.max) {
-            currentNum = this.max
+          if (this.currentMultiple.max && currentNum > this.currentMultiple.max) {
+            currentNum = this.currentMultiple.max
           }
           for (let n = 0; n < currentNum; n++) {
             const file = fileList[n]
@@ -122,7 +126,7 @@ export default defineComponent({
           }
           if (currentFileList.length > 0 && currentFileList.length !== currentNum) {
             // 存在不合格数据
-            if (this.multipleAppend) {
+            if (this.currentMultiple.append) {
               this.$emit('file', currentFileList)
             }
           } else {
