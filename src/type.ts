@@ -47,7 +47,7 @@ export interface FileProps {
   accept?: string
   size?: number
   disabled?: boolean
-  multiple?: boolean | DefaultEditFileOption['multiple']
+  multiple?: DefaultEditFileOption['multiple']
 }
 
 export interface ShowValueProps {

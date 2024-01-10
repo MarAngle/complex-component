@@ -7,7 +7,7 @@
     ref="file"
     type="file"
     :accept="accept"
-    :multiple="!!currentMultiple"
+    :multiple="!!multiple"
     :disabled="disabled"
     @change="onChange"
   />
@@ -38,25 +38,6 @@ export default defineComponent({
       type: Number,
       required: false,
       default: 0
-    }
-  },
-  computed: {
-    currentMultiple() {
-      if (!this.multiple) {
-        return false
-      } else if (this.multiple === true) {
-        return {
-          min: 0,
-          max: 0,
-          append: false
-        }
-      } else {
-        return {
-          min: this.multiple.min || 0,
-          max: this.multiple.max || 0,
-          append: this.multiple.append || false
-        }
-      }
     }
   },
   methods: {
@@ -107,16 +88,16 @@ export default defineComponent({
       const input = (e.target as HTMLInputElement)
       const fileList = input.files
       if (fileList && fileList.length > 0) {
-        if (!this.currentMultiple) {
+        if (!this.multiple) {
           const file = fileList[0]
           if (this.check(file)) {
-            this.$emit('file', file)
+            this.$emit('select', file)
           }
         } else {
           const currentFileList: File[] = []
           let currentNum = fileList.length
-          if (this.currentMultiple.max && currentNum > this.currentMultiple.max) {
-            currentNum = this.currentMultiple.max
+          if (this.multiple.max && currentNum > this.multiple.max) {
+            currentNum = this.multiple.max
           }
           for (let n = 0; n < currentNum; n++) {
             const file = fileList[n]
@@ -126,11 +107,11 @@ export default defineComponent({
           }
           if (currentFileList.length > 0 && currentFileList.length !== currentNum) {
             // 存在不合格数据
-            if (this.currentMultiple.append) {
-              this.$emit('file', currentFileList)
+            if (this.multiple.append) {
+              this.$emit('select', currentFileList)
             }
           } else {
-            this.$emit('file', currentFileList)
+            this.$emit('select', currentFileList)
           }
         }
       }
