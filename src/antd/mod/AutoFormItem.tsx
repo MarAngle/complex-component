@@ -5,6 +5,7 @@ import { DefaultEditOptionType } from "complex-data/src/mod/DefaultEdit"
 import { mergeAttributes, parseAttributes } from "../utils"
 import { FormItem, Tooltip, Input, InputNumber, Textarea, Switch, Select, SelectOption, Cascader, DatePicker, RangePicker, Button } from "ant-design-vue"
 import AntdForm from "../class/AntdForm"
+import ImportFile from "../data/ImportFile.vue"
 
 export interface FormItemPayloadType {
   prop: string
@@ -145,7 +146,7 @@ export default defineComponent({
       } else if (this.data.type === 'dateRange') {
         tag = RangePicker
       } else if (this.data.type === 'file') {
-        // tag = UploadFile
+        tag = ImportFile
       } else if (this.data.type === 'button') {
         tag = Button
         const text = (this.data.$option as DefaultEditOptionType<'button'>).name || this.data.$getParent()!.$getInterface('label', this.type)

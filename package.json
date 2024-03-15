@@ -1,6 +1,6 @@
 {
   "name": "complex-component",
-  "version": "3.2.36",
+  "version": "3.2.38",
   "description": "a complex component",
   "main": "index.ts",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "ant-design-vue": "^3.2.20",
-    "complex-data": "3.2.37 - 3.2.99"
+    "complex-data": "3.2.40 - 3.2.99"
   },
   "devDependencies": {
     "typescript": "~5.0.4"

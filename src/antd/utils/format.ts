@@ -267,7 +267,7 @@ const dict = {
   $file: {
     init: modelFuncDict.valueInit,
     on: {
-      change: modelFuncDict.change
+      select: modelFuncDict.select
     },
     format(edit: DefaultEdit<'file'>, payload: FormItemPayloadType) {
       let layout = edit.$option.layout
@@ -287,10 +287,9 @@ const dict = {
           minNum: edit.$option.min,
           maxSize: edit.$option.size,
           upload: edit.$option.upload,
-          fileUpload: edit.$option.fileUpload,
           layout: layout,
           disabled: payload.disabled || edit.disabled.getData(payload.type),
-          placeholder: edit.placeholder!.getData(payload.type)
+          name: edit.placeholder!.getData(payload.type)
         }
       })
       bindEvent(this as dictItemType, itemAttributes, edit, payload)
