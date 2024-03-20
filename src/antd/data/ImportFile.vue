@@ -116,6 +116,11 @@ export default defineComponent({
       required: false,
       default: false
     },
+    complex: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
     max: {
       type: Number,
       required: false,
@@ -148,10 +153,11 @@ export default defineComponent({
     }
   },
   data () {
+    const currentValue = this.parseValue(this.value)
     return {
       isImport: false,
-      currentValue: this.value || (!this.multiple ? undefined : []),
-      data: !this.multiple ? undefined as undefined | uploadFileDataType : [] as uploadFileDataType[]
+      currentValue: currentValue,
+      data: this.parseCurrentValue(currentValue)
     }
   },
   watch: {
@@ -160,23 +166,29 @@ export default defineComponent({
     }
   },
   methods: {
-    syncData() {
+    parseCurrentValue(currentValue: any) {
+      if (this.complex) {
+        return currentValue
+      }
       if (!this.multiple) {
-        if (this.currentValue !== this.value) {
-          this.currentValue = this.value
-          this.data = this.value ? { data: this.value as string, name: this.value as string, url: undefined } : undefined
-        }
+        return currentValue ? { data: currentValue as string, name: currentValue as string, url: undefined } : undefined
       } else {
-        if (this.value !== this.currentValue) {
-          this.currentValue = this.value || []
-          this.data = (this.currentValue as string[]).map(item => {
-            return {
-              data: item,
-              name: item,
-              url: undefined
-            }
-          })
-        }
+        return (currentValue as string[]).map(item => {
+          return {
+            data: item,
+            name: item,
+            url: undefined
+          }
+        })
+      }
+    },
+    parseValue(value: any) {
+      return value || (!this.multiple ? undefined : [])
+    },
+    syncData() {
+      if (this.currentValue !== this.value) {
+        this.currentValue = this.parseValue(this.value)
+        this.data = this.parseCurrentValue(this.currentValue)
       }
     },
     onImport() {
