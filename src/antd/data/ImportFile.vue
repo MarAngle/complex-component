@@ -197,11 +197,21 @@ export default defineComponent({
       }
     },
     setSingleUpload(file: uploadFileDataType, emit?: boolean) {
-      if (this.currentValue !== file.data) {
-        this.currentValue = file.data
-        this.data = file
-        if (emit) {
-          this.emitData()
+      if (!this.complex) {
+        if (this.currentValue !== file.data) {
+          this.currentValue = file.data
+          this.data = file
+          if (emit) {
+            this.emitData()
+          }
+        }
+      } else {
+        if (this.currentValue !== file) {
+          this.currentValue = file
+          this.data = this.currentValue
+          if (emit) {
+            this.emitData()
+          }
         }
       }
     },
@@ -222,12 +232,21 @@ export default defineComponent({
       this.$emit('select', this.currentValue)
     },
     setMutipleUpload(file: uploadFileDataType[], emit?: boolean) {
-      file.forEach(fileItem => {
-        if ((this.currentValue as string[]).indexOf(fileItem.data) === -1) {
-          (this.currentValue as string[]).push(fileItem.data);
-          (this.data as uploadFileDataType[]).push(fileItem)
-        }
-      })
+      if (!this.complex) {
+        file.forEach(fileItem => {
+          if ((this.currentValue as string[]).indexOf(fileItem.data) === -1) {
+            (this.currentValue as string[]).push(fileItem.data);
+            (this.data as uploadFileDataType[]).push(fileItem)
+          }
+        })
+      } else {
+        file.forEach(fileItem => {
+          if ((this.currentValue as any[]).indexOf(fileItem) === -1) {
+            (this.currentValue as any[]).push(fileItem)
+          }
+        })
+        this.data = this.currentValue
+      }
       if (this.max && (this.currentValue as string[]).length > this.max) {
         (this.currentValue as string[]).length = this.max;
         (this.data as uploadFileDataType[]).length = this.max
