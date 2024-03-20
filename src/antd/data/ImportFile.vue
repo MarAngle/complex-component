@@ -55,13 +55,13 @@
       <template v-if="multiple && (data as uploadFileDataType[]).length > 0">
         <div class="complex-import-file-name-item" v-for="(item, index) in (data as uploadFileDataType[])" :key="index">
           <span class="complex-import-file-name-item-content">{{ item.name }}</span>
-          <CloseOutlined @click="onRemove(index)" />
+          <CloseOutlined v-if="!disabled" @click="onRemove(index)" />
         </div>
       </template>
       <template v-else-if="!multiple && data">
         <div class="complex-import-file-name-item">
           <span class="complex-import-file-name-item-content">{{ (data as uploadFileDataType).name }}</span>
-          <CloseOutlined @click="onRemove()" />
+          <CloseOutlined v-if="!disabled" @click="onRemove()" />
         </div>
       </template>
     </div>
@@ -206,6 +206,9 @@ export default defineComponent({
       }
     },
     onRemove(index?: number) {
+      if (this.disabled || this.loading) {
+        return
+      }
       if (index === undefined) {
         this.currentValue = undefined
         this.data = undefined
