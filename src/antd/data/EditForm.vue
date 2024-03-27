@@ -91,7 +91,7 @@ export default defineComponent({
       const data = {
         form: this.currentForm,
         list: this.pageList!,
-        type: this.edit,
+        type: this.type,
         menu: this.menu,
         layout: this.layout,
         disabled: this.disabled,
@@ -134,6 +134,9 @@ export default defineComponent({
       this.$nextTick(() => {
         this.currentForm.clearValidate()
       })
+      if (this.type !== this.edit) {
+        console.error(`警告：type:${this.type}与edit:${this.edit}值不同，20240327版本更新后已修正edit错误的作为type传递到FormView的BUG，如果看到此提醒，请检查代码！`)
+      }
     },
     initPageList() {
       this.mainList = this.dictionary.$getList(this.type)
