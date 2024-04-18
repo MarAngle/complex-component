@@ -77,6 +77,11 @@ const config = {
       height: 48
     }
   },
+  console: {
+    EditForm: {
+      typeEdit: true
+    }
+  }
 }
 
 export default config

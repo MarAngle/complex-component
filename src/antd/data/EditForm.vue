@@ -16,6 +16,7 @@ import { PropType, defineComponent } from "vue"
 import { DictionaryData, DictionaryList, MenuData, ObserveList } from "complex-data"
 import FormView from "./FormView"
 import AntdForm from "../class/AntdForm"
+import config from "../config"
 
 type dataType = undefined | Record<PropertyKey, any>
 
@@ -134,7 +135,7 @@ export default defineComponent({
       this.$nextTick(() => {
         this.currentForm.clearValidate()
       })
-      if (this.type !== this.edit) {
+      if (this.type !== this.edit && config.console.EditForm.typeEdit) {
         console.error(`警告：type:${this.type}与edit:${this.edit}值不同，20240327版本更新后已修正edit错误的作为type传递到FormView的BUG，如果看到此提醒，请检查代码！`)
       }
     },

@@ -1,3 +1,6 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
 import { AttributesData, DefaultEdit } from "complex-data"
 import { FormItemPayloadType } from "../mod/AutoFormItem"
 import { DefaultEditTypeDict } from "complex-data/src/mod/DefaultEdit"
@@ -7,7 +10,7 @@ import { getEnv } from "complex-utils"
 
 const showLogs = {
   init: false,
-  model: true
+  model: false
 }
 
 if (getEnv('real') === 'production') {
