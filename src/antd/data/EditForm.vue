@@ -148,11 +148,7 @@ export default defineComponent({
     },
     initData() {
       this.initPageList()
-      const $buildFormDataArgs: Parameters<DictionaryList['$buildFormData']> = [this.mainList, this.type]
-      if (this.edit === 'change') {
-        $buildFormDataArgs.push(this.data)
-      }
-      this.dictionary.$buildFormData(...$buildFormDataArgs).then((res: any) => {
+      this.dictionary.$buildFormData(this.mainList, this.type, this.data).then((res: any) => {
         this.currentForm.setData(res.data)
         if (this.observe) {
           this.pageList!.setData(this.currentForm.getData(), this.type)
