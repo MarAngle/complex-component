@@ -14,6 +14,8 @@
       justify-content: space-between;
       align-items: center;
       .complex-import-file-name-item-content{
+        cursor: pointer;
+        text-decoration: underline;
         width: 100%;
         flex: auto;
         overflow: hidden;
@@ -22,7 +24,6 @@
       }
       .anticon {
         flex: none;
-        color: rgba(255, 77, 79, 1);
         line-height: 14px;
         margin-left: 8px;
       }
@@ -54,14 +55,14 @@
     <div class="complex-import-file-name">
       <template v-if="multiple && (data as uploadFileDataType[]).length > 0">
         <div class="complex-import-file-name-item" v-for="(item, index) in (data as uploadFileDataType[])" :key="index">
-          <span class="complex-import-file-name-item-content">{{ item.name }}</span>
-          <CloseOutlined v-if="!disabled" @click="onRemove(index)" />
+          <span class="complex-import-file-name-item-content" :class="{'complex-color-link': !disabled}" @click="onDownload(item)">{{ item.name }}</span>
+          <CloseOutlined class="complex-color-danger" v-if="!disabled" @click="onRemove(index)" />
         </div>
       </template>
       <template v-else-if="!multiple && data">
         <div class="complex-import-file-name-item">
-          <span class="complex-import-file-name-item-content">{{ (data as uploadFileDataType).name }}</span>
-          <CloseOutlined v-if="!disabled" @click="onRemove()" />
+          <span class="complex-import-file-name-item-content" :class="{'complex-color-link': !disabled}" @click="onDownload(data)">{{ (data as uploadFileDataType).name }}</span>
+          <CloseOutlined class="complex-color-danger" v-if="!disabled" @click="onRemove()" />
         </div>
       </template>
     </div>
@@ -74,6 +75,7 @@ import { Button } from "ant-design-vue";
 import { CloseOutlined } from "@ant-design/icons-vue";
 import { notice } from "complex-plugin";
 import InputFile from "../../base/data/InputFile.vue"
+import { downloadFile } from "complex-utils";
 
 interface uploadFileDataType {
   data: any
@@ -264,6 +266,14 @@ export default defineComponent({
       }).catch(() => {
         this.isImport = false
       })
+    },
+    onDownload(data: uploadFileDataType) {
+      if (data.url) {
+        downloadFile({
+          url: data.url,
+          name: data.name
+        })
+      }
     }
   }
 })
