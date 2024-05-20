@@ -1,6 +1,6 @@
 import { StyleValue } from "vue"
 import { PaginationData } from "complex-data"
-import { fileOption } from "complex-data/src/type"
+import { fileOption } from "complex-data/type"
 
 export interface CommaNumberProps {
   data: number
