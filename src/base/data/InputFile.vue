@@ -134,13 +134,15 @@ export default defineComponent({
               currentFileList.push(file)
             }
           }
-          if (currentFileList.length > 0 && currentFileList.length !== currentNum) {
-            // 存在不合格数据
-            if (this.append) {
+          if (currentFileList.length > 0) {
+            if (currentFileList.length !== currentNum) {
+              // 存在不合格数据
+              if (this.append) {
+                this.$emit('file', currentFileList)
+              }
+            } else {
               this.$emit('file', currentFileList)
             }
-          } else {
-            this.$emit('file', currentFileList)
           }
         }
       }
