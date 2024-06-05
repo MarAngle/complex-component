@@ -47,7 +47,7 @@ export default defineComponent({
         const namelist = file.name.split('.')
         const fileName = ('.' + namelist[namelist.length - 1]).toLowerCase()
         const acceptList = accept.split(',')
-        for (let n in acceptList) {
+        for (let n = 0; n < acceptList.length; n++) {
           let acceptItem = acceptList[n]
           if (acceptItem) {
             if (acceptItem.indexOf('.') === 0) { // 文件后缀形式判断
@@ -105,13 +105,15 @@ export default defineComponent({
               currentFileList.push(file)
             }
           }
-          if (currentFileList.length > 0 && currentFileList.length !== currentNum) {
-            // 存在不合格数据
-            if (this.multiple.append) {
+          if (currentFileList.length > 0) {
+            if (currentFileList.length !== currentNum) {
+              // 存在不合格数据
+              if (this.multiple.append) {
+                this.$emit('select', currentFileList)
+              }
+            } else {
               this.$emit('select', currentFileList)
             }
-          } else {
-            this.$emit('select', currentFileList)
           }
         }
       }
