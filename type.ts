@@ -1,6 +1,6 @@
 import { StyleValue } from "vue"
 import { PaginationData } from "complex-data"
-import { fileOption } from "complex-data/type"
+import { multipleFileOption } from "complex-data/type"
 
 export interface CommaNumberProps {
   data: number
@@ -47,7 +47,7 @@ export interface FileProps {
   accept?: string
   size?: number
   disabled?: boolean
-  multiple?: fileOption['multiple']
+  multiple?: multipleFileOption['multiple']
 }
 
 export interface ShowValueProps {

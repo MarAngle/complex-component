@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { NumberUnitProps } from '../type'
+import { NumberUnitProps } from '../../type'
 import config from '../../config'
 
 export default defineComponent({

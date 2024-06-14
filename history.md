@@ -1,4 +1,8 @@
 
+### 4.3.3
+- 适配新版fileOtion
+- 优化type位置
+
 ### 4.3.2
 - 修正FileView多选模式下符合条件数据为空时错误触发select的BUG
 

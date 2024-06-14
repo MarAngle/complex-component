@@ -18,7 +18,7 @@
 import { defineComponent, PropType } from 'vue'
 import NumberChange from './NumberChange.vue'
 import NumberUnit from './NumberUnit.vue'
-import { NumberAreaProps } from '../type'
+import { NumberAreaProps } from '../../type'
 
 export default defineComponent({
   name: 'NumberArea',

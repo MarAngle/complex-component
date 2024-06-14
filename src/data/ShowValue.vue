@@ -4,7 +4,7 @@
 <script lang="ts">
 import { PropType, defineComponent } from "vue"
 import { isExist } from "complex-utils"
-import { ShowValueProps } from "../type"
+import { ShowValueProps } from "../../type"
 
 export default defineComponent({
   name: 'ShowValue',

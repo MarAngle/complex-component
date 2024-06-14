@@ -6,8 +6,8 @@
 import { getNum } from 'complex-utils'
 import { defineComponent, PropType } from 'vue'
 import CommaNumber from './CommaNumber.vue'
+import { NumberChangeProps } from '../../type'
 import config from '../../config'
-import { NumberChangeProps } from '../type'
 
 export default defineComponent({
   name: 'NumberChange',

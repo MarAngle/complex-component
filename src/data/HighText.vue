@@ -7,8 +7,8 @@
 <script lang="ts">
 import { PropType, defineComponent } from "vue"
 import { findTargetInStr } from "complex-utils"
+import { HighTextProps } from "../../type"
 import config from "../../config"
-import { HighTextProps } from "../type"
 
 export default defineComponent({
   name: 'HighText',
