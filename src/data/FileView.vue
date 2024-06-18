@@ -26,7 +26,7 @@ export default defineComponent({
       required: false
     },
     multiple: {
-      type: Object as PropType<FileProps['multiple']>,
+      type: Object as PropType<FileProps<true>['multiple']>,
       required: false
     },
     disabled: {

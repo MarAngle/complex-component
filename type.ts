@@ -43,12 +43,15 @@ export interface HighTextProps {
   limitCase?: boolean
 }
 
-export interface FileProps {
+interface DefaultFileProps {
   accept?: string
   size?: number
   disabled?: boolean
-  multiple?: multipleFileOption['multiple']
 }
+
+export type FileProps<M extends boolean = false> = M extends true ? DefaultFileProps & {
+  multiple: multipleFileOption['multiple']
+} : DefaultFileProps
 
 export interface ShowValueProps {
   value?: unknown
