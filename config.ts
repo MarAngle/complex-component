@@ -35,7 +35,7 @@ const config = {
     }
   },
   // 挂载到具体对象下，可后期模块中更改
-  parseAttrs: function(attrsData?: AttrsValue) {
+  parseAttrs: function(attrsData?: AttrsValue, payload?: any) {
     if (attrsData) {
       const data: Record<PropertyKey, unknown> = {
         ...attrsData.attrs,
@@ -43,7 +43,16 @@ const config = {
         style: attrsData.style
       }
       for (const funcName in attrsData.on) {
-        data['on' + upperCaseFirstChar(funcName)] = attrsData.on[funcName]
+        const func = attrsData.on[funcName]
+        if (func) {
+          if (!payload) {
+            data['on' + upperCaseFirstChar(funcName)] = func
+          } else {
+            data['on' + upperCaseFirstChar(funcName)] = function(...args: any[]) {
+              return func(...args, payload)
+            }
+          }
+        }
       }
       if (attrsData.id.length > 0) {
         data.id = attrsData.id.join(' ')
