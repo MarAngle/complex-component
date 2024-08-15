@@ -73,12 +73,12 @@ export default defineComponent({
     },
     check(file: File) {
       if (!this.checkAccept(file, this.accept)) {
-        notice.showMsg(`文件格式不匹配!`, 'error')
+        notice.message(`文件格式不匹配!`, 'error')
         return false
       } else if (this.size) {
         const currentSize = file.size / 1024 / 1024
         if (currentSize > this.size) {
-          notice.showMsg( `文件大小不能大于${this.size}MB!`, 'error')
+          notice.message( `文件大小不能大于${this.size}MB!`, 'error')
           return false
         }
       }
