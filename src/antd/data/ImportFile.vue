@@ -225,8 +225,13 @@ export default defineComponent({
         this.currentValue = undefined
         this.data = undefined
       } else {
-        (this.currentValue as any[]).splice(index, 1);
-        (this.data as uploadFileDataType[]).splice(index, 1)
+        if (this.currentValue !== this.data) {
+          (this.currentValue as any[]).splice(index, 1);
+          (this.data as uploadFileDataType[]).splice(index, 1)
+        } else {
+          // 当为一个元素避免多删除
+          (this.currentValue as any[]).splice(index, 1);
+        }
       }
       this.emitData()
     },
