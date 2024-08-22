@@ -10,7 +10,7 @@
 <template>
   <div class="number-area">
     <NumberChange :data="data" :color="color" :time="time" :decimal="decimal" :comma="comma" :format="format" />
-    <NumberUnit :unit="unit" :unitOption="unitOption" />
+    <NumberUnit v-if="unit" :unit="unit" :unitOption="unitOption" />
   </div>
 </template>
 
@@ -55,7 +55,7 @@ export default defineComponent({
     },
     unit: {
       type: String,
-      required: true
+      required: false
     },
     unitOption: {
       type: Object as PropType<NumberAreaProps['unitOption']>,
