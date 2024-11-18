@@ -1,7 +1,6 @@
 
 <template>
-  <span v-if="!format" class="comma-number" :class="currentClass" >{{ currentData }}</span>
-  <span v-else class="comma-number" :class="currentClass" >{{ format(currentData) }}</span>
+  <span class="comma-number" :class="currentClass" >{{ !format ? currentData : format(currentData) }}</span>
 </template>
 
 <script lang="ts">

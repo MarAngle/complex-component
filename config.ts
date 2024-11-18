@@ -16,6 +16,7 @@ const config = {
       let decimalData = 0;
       [data, decimalData] = parseNum(data)
       if (decimalData) {
+        // 去掉首位的0
         decimalStr = decimalData.toString().slice(1)
       }
     }

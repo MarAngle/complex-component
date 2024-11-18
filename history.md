@@ -1,6 +1,6 @@
 
-### 4.6.12-ing
-- 优化HighText
+### 4.6.12
+- 优化HighText/NumberChange
 
 ### 4.6.10
 - 升级依赖

@@ -1,5 +1,4 @@
 <style scoped>
-
 .number-unit{
   display: inline-block;
 }

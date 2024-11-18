@@ -25,7 +25,7 @@ export interface NumberUnitProps {
 }
 
 export interface NumberAreaProps extends NumberChangeProps {
-  unit: string
+  unit?: string
   unitOption?: NumberUnitProps['option']
 }
 
