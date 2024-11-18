@@ -1,14 +1,6 @@
-<template>
-  <span class="complex-high-text">
-    <span v-for="(val,key) in list" :key="key" class="complex-high-text-item" :class="{ 'complex-high-text-item-is-high': val.high }" :style="val.high ? highStyle : defaultStyle" >{{ val.data }}</span>
-  </span>
-</template>
-
-<script lang="ts">
-import { PropType, defineComponent } from "vue"
+import { defineComponent, h, PropType } from "vue"
 import { findTargetInStr } from "complex-utils"
 import { HighTextProps } from "../../type"
-import config from "../../config"
 
 export default defineComponent({
   name: 'HighText',
@@ -29,19 +21,13 @@ export default defineComponent({
       type: String,
       required: true
     },
-    defaultStyle: {
-      type: Object as PropType<HighTextProps['defaultStyle']>,
-      required: false,
-      default: () => {
-        return {}
-      }
+    defaultOption: {
+      type: Object as PropType<HighTextProps['defaultOption']>,
+      required: false
     },
-    highStyle: {
-      type: Object as PropType<HighTextProps['highStyle']>,
-      required: false,
-      default: () => {
-        return config.highText.style
-      }
+    highOption: {
+      type: Object as PropType<HighTextProps['highOption']>,
+      required: false
     },
     limitNum: {
       type: Number,
@@ -89,6 +75,16 @@ export default defineComponent({
       }
       return list
     }
+  },
+  render() {
+    return h('span', {
+      class: 'complex-high-text'
+    }, this.list.map(item => {
+      const option = !item.high ? this.defaultOption : this.highOption
+      return h('span', {
+        class: !item.high ? '' : 'complex-high-text-is-high',
+        ...option
+      }, item.data)
+    }))
   }
 })
-</script>

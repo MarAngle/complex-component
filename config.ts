@@ -65,12 +65,7 @@ const config = {
       return {}
     }
   },
-  animateTime: 800,
-  highText: {
-    style: {
-      color: '#FF4D4F'
-    } as StyleValue
-  }
+  animateTime: 800
 }
 
 export default config

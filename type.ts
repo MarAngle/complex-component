@@ -37,10 +37,10 @@ export interface AutoIndexProps {
 export interface HighTextProps {
   data: unknown
   target: string
-  defaultStyle?: StyleValue
-  highStyle?: StyleValue
   limitNum?: number
   limitCase?: boolean
+  defaultOption?: Record<PropertyKey, any>
+  highOption?: Record<PropertyKey, any>
 }
 
 export interface FileProps {

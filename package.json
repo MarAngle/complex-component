@@ -1,6 +1,6 @@
 {
   "name": "complex-component",
-  "version": "4.6.10",
+  "version": "4.6.12-ing",
   "description": "a complex component",
   "main": "index.ts",
   "repository": {
