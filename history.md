@@ -1,4 +1,7 @@
 
+### 4.8.1
+- 稳定版
+
 ### 4.6.12
 - 优化HighText/NumberChange
 

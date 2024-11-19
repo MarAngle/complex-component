@@ -1,4 +1,3 @@
-import { StyleValue } from "vue"
 import { PaginationData } from "complex-data"
 import { multipleFileOption } from "complex-data/type"
 
