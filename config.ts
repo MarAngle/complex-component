@@ -1,4 +1,3 @@
-import { StyleValue } from "vue"
 import { upperCaseFirstChar, parseNum } from "complex-utils"
 import { AttrsValue } from "complex-data"
 import dataConfig from 'complex-data/config'
