@@ -26,9 +26,7 @@ export default defineComponent({
     time: {
       type: Number,
       required: false,
-      default: () => {
-        return config.animateTime
-      }
+      default: () => config.animateTime
     },
     decimal: {
       type: Number,

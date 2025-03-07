@@ -5,9 +5,7 @@ import dataConfig from 'complex-data/config'
 const config = {
   data: dataConfig,
   parseData<D = unknown>(data: undefined | Record<string, undefined | D>, prop: string) {
-    if (data) {
-      return data[prop]
-    }
+    return data?.[prop]
   },
   parseNumberByComma(data: number | string, comma?: string, decimal?: boolean, list?: boolean) {
     let decimalStr = ''
@@ -45,13 +43,7 @@ const config = {
       for (const funcName in attrsData.on) {
         const func = attrsData.on[funcName]
         if (func) {
-          if (!payload) {
-            data['on' + upperCaseFirstChar(funcName)] = func
-          } else {
-            data['on' + upperCaseFirstChar(funcName)] = function(...args: any[]) {
-              return func(...args, payload)
-            }
-          }
+          data['on' + upperCaseFirstChar(funcName)] = !payload ? func : (...args: any[]) => func(...args, payload)
         }
       }
       if (attrsData.id.length > 0) {

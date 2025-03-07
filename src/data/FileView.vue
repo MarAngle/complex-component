@@ -44,29 +44,19 @@ export default defineComponent({
     checkAccept(file: File, accept?: string) {
       if (accept) {
         const fileType = file.type
-        const namelist = file.name.split('.')
-        const fileName = ('.' + namelist[namelist.length - 1]).toLowerCase()
+        const fileName = '.' + file.name.split('.').pop()?.toLowerCase()
         const acceptList = accept.split(',')
-        for (let n = 0; n < acceptList.length; n++) {
-          let acceptItem = acceptList[n]
-          if (acceptItem) {
-            if (acceptItem.indexOf('.') === 0) { // 文件后缀形式判断
-              if (acceptItem === fileName) {
-                return true
-              }
-            } else { // 文件type判断=暂时只支持image/*...类型
-              if (acceptItem === fileType) {
-                return true
-              } else if (fileType && acceptItem.indexOf('*') > -1) {
-                acceptItem = acceptItem.split('*').join('')
-                if (fileType.indexOf(acceptItem) > -1) {
-                  return true
-                }
-              }
-            }
+        return acceptList.some(acceptItem => {
+          if (acceptItem.startsWith('.')) {
+            return acceptItem === fileName
+          } else if (acceptItem === fileType) {
+            return true
+          } if (fileType && acceptItem.includes('*')) {
+            acceptItem = acceptItem.split('*').join('')
+            return fileType.includes(acceptItem)
           }
-        }
-        return false
+          return false
+        })
       } else {
         return true
       }
@@ -75,12 +65,9 @@ export default defineComponent({
       if (!this.checkAccept(file, this.accept)) {
         notice.message(`文件格式不匹配!`, 'error')
         return false
-      } else if (this.size) {
-        const currentSize = file.size / 1024 / 1024
-        if (currentSize > this.size) {
-          notice.message( `文件大小不能大于${this.size}MB!`, 'error')
-          return false
-        }
+      } else if (this.size && file.size / 1024 / 1024 > this.size) {
+        notice.message(`文件大小不能大于${this.size}MB!`, 'error')
+        return false
       }
       return true
     },

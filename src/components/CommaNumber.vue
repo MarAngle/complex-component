@@ -40,11 +40,7 @@ export default defineComponent({
   },
   computed: {
     currentClass() {
-      if (this.color) {
-        return 'local-main-color-' + this.color
-      } else {
-        return ''
-      }
+      return this.color ? 'local-main-color-' + this.color : ''
     },
     currentData() {
       return config.parseNumberByComma(this.data, this.comma, this.decimal) as string

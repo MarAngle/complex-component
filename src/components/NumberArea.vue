@@ -59,8 +59,7 @@ export default defineComponent({
     },
     unitOption: {
       type: Object as PropType<NumberAreaProps['unitOption']>,
-      required: false,
-      default: undefined
+      required: false
     }
   }
 })

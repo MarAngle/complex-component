@@ -42,7 +42,7 @@ export default defineComponent({
   watch: {
     data: {
       immediate: true,
-      handler: function(val) {
+      handler(val) {
         this.initList(val)
       }
     }
@@ -57,13 +57,10 @@ export default defineComponent({
           case: this.limitCase
         })
         const indexList = this.getHighIndex(findList, this.target.length)
-        const list = origindata.split('')
-        for (let n = 0; n < list.length; n++) {
-          this.list.push({
-            data: list[n],
-            high: indexList.indexOf(n) > -1
-          })
-        }
+        this.list = origindata.split('').map((char, index) => ({
+          data: char,
+          high: indexList.includes(index)
+        }))
       }
     },
     getHighIndex(startList: number[], size: number) {
