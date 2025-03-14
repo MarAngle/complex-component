@@ -1,4 +1,7 @@
 
+### 4.8.4
+- 输出NumberArea/NumberChange组件
+
 ### 4.8.3
 - 基于AI优化代码
 

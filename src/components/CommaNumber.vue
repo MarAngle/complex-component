@@ -34,10 +34,6 @@ export default defineComponent({
       required: false
     }
   },
-  data() {
-    return {
-    }
-  },
   computed: {
     currentClass() {
       return this.color ? 'local-main-color-' + this.color : ''
