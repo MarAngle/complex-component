@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "^3.5.2",
-    "complex-data": "4.8.14 - 4.8.99",
+    "complex-data": "4.8.15 - 4.8.99",
     "complex-plugin": "4.8.2 - 4.8.99"
   },
   "devDependencies": {
