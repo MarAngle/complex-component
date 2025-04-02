@@ -1,9 +1,8 @@
 import { upperCaseFirstChar, parseNum } from "complex-utils"
-import { AttrsValue } from "complex-data"
-import dataConfig from 'complex-data/config'
+import { AttrsValue, dataConfig } from "complex-data"
 
-const config = {
-  data: dataConfig,
+const componentConfig = {
+  dataConfig: dataConfig,
   parseData<D = unknown>(data: undefined | Record<string, undefined | D>, prop: string) {
     return data?.[prop]
   },
@@ -60,4 +59,4 @@ const config = {
   animateTime: 800
 }
 
-export default config
+export default componentConfig

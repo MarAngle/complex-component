@@ -6,7 +6,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { CommaNumberProps } from '../../type'
-import config from '../../config'
+import { componentConfig } from '../../index'
 
 export default defineComponent({
   name: 'CommaNumber',
@@ -39,7 +39,7 @@ export default defineComponent({
       return this.color ? 'local-main-color-' + this.color : ''
     },
     currentData() {
-      return config.parseNumberByComma(this.data, this.comma, this.decimal) as string
+      return componentConfig.parseNumberByComma(this.data, this.comma, this.decimal) as string
     }
   }
 })

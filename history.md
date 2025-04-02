@@ -1,4 +1,7 @@
 
+### 4.8.5
+- feat:config=>componentConfig
+
 ### 4.8.4
 - 输出NumberArea/NumberChange组件
 

@@ -1,6 +1,6 @@
 {
   "name": "complex-component",
-  "version": "4.8.4",
+  "version": "4.8.5",
   "description": "a complex component",
   "main": "index.ts",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "^3.5.2",
-    "complex-data": "4.8.6 - 4.8.99",
+    "complex-data": "4.8.14 - 4.8.99",
     "complex-plugin": "4.8.2 - 4.8.99"
   },
   "devDependencies": {

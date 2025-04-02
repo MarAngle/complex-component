@@ -7,7 +7,7 @@ import { getNum } from 'complex-utils'
 import { defineComponent, PropType } from 'vue'
 import CommaNumber from './CommaNumber.vue'
 import { NumberChangeProps } from '../../type'
-import config from '../../config'
+import { componentConfig } from '../../index'
 
 export default defineComponent({
   name: 'NumberChange',
@@ -26,7 +26,7 @@ export default defineComponent({
     time: {
       type: Number,
       required: false,
-      default: () => config.animateTime
+      default: () => componentConfig.animateTime
     },
     decimal: {
       type: Number,
