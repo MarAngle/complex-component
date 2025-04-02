@@ -1,5 +1,5 @@
 
-### 4.8.5
+### 4.8.5/6
 - feat:config=>componentConfig
 
 ### 4.8.4
