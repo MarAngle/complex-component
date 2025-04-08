@@ -1,7 +1,8 @@
+import { reactive } from "vue"
 import { upperCaseFirstChar, parseNum } from "complex-utils"
 import { AttrsValue, dataConfig } from "complex-data"
 
-const componentConfig = {
+const componentConfig = reactive({
   dataConfig: dataConfig,
   parseData<D = unknown>(data: undefined | Record<string, undefined | D>, prop: string) {
     return data?.[prop]
@@ -57,6 +58,6 @@ const componentConfig = {
     }
   },
   animateTime: 800
-}
+})
 
 export default componentConfig

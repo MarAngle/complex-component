@@ -1,6 +1,7 @@
 
-### 4.9.1
+### 4.9.1/2
 - feat:修改模块加载逻辑为ES2020
+- feat:componentConfig更改为reactive对象
 
 ### 4.8.5/6
 - feat:config=>componentConfig
