@@ -1,4 +1,7 @@
 
+### 4.9.1
+- feat:修改模块加载逻辑为ES2020
+
 ### 4.8.5/6
 - feat:config=>componentConfig
 
