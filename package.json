@@ -1,6 +1,6 @@
 {
   "name": "complex-component",
-  "version": "4.9.2",
+  "version": "4.10.1",
   "description": "a complex component",
   "type": "module",
   "main": "index.ts",
@@ -10,15 +10,20 @@
   },
   "dependencies": {
     "vue": "^3.5.2",
-    "complex-data": "4.9.1 - 4.9.99",
-    "complex-plugin": "4.9.1 - 4.9.99"
+    "complex-data": "4.10.1 - 4.10.99",
+    "complex-plugin": "4.10.1 - 4.10.99"
   },
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^4.0.6",
+    "jsdom": "^27.1.0",
+    "@vitejs/plugin-vue": "^5.1.1",
+    "@vitejs/plugin-vue-jsx": "^4.0.0"
   },
   "scripts": {
-    "check": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "check": "tsc --build --noEmit",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [
     "complex",
