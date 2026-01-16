@@ -1,4 +1,7 @@
 
+### `4.10.3`
+- fix: 修正NumberArea组件在传递unitOption时属性错误的BUG
+
 ### `4.10.1` `4.10.2`
 - feat: 改造为纯源码模式
 - feat: 完善测试流程

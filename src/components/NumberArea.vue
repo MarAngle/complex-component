@@ -10,7 +10,7 @@
 <template>
   <div class="number-area">
     <NumberChange :data="data" :color="color" :time="time" :decimal="decimal" :comma="comma" :format="format" />
-    <NumberUnit v-if="unit" :unit="unit" :unitOption="unitOption" />
+    <NumberUnit v-if="unit" :unit="unit" :option="unitOption" />
   </div>
 </template>
 
