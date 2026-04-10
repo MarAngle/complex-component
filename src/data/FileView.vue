@@ -16,7 +16,7 @@
 <script lang="ts">
 import { PropType, defineComponent } from 'vue'
 import { notice } from 'complex-plugin'
-import { MultipleFileProps } from '../../type'
+import type { MultipleFileProps } from '../../type'
 
 export default defineComponent({
   name: 'FileView',

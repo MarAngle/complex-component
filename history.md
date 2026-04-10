@@ -1,4 +1,7 @@
 
+### `4.10.4`
+- refactor: 将TypeScript类型导入语法升级为type关键字形式
+
 ### `4.10.3`
 - fix: 修正NumberArea组件在传递unitOption时属性错误的BUG
 

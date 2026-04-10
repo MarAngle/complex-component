@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { PropType, defineComponent } from "vue"
-import { AutoIndexProps } from "../../type"
+import type { AutoIndexProps } from "../../type"
 
 export default defineComponent({
   name: 'AutoIndex',

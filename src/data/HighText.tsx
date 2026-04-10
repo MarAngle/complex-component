@@ -1,6 +1,6 @@
 import { defineComponent, h, PropType } from "vue"
 import { findTargetInStr } from "complex-utils"
-import { HighTextProps } from "../../type"
+import type { HighTextProps } from "../../type"
 
 export default defineComponent({
   name: 'HighText',

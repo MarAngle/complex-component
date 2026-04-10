@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { CommaNumberProps } from '../../type'
+import type { CommaNumberProps } from '../../type'
 import componentConfig from '../../componentConfig'
 
 export default defineComponent({

@@ -1,5 +1,5 @@
-import { PaginationData } from "complex-data"
-import { multipleFileOption } from "complex-data/type"
+import type { PaginationData } from "complex-data"
+import type { multipleFileOption } from "complex-data/type"
 
 export interface CommaNumberProps {
   data: number

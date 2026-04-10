@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { NumberUnitProps } from '../../type'
+import type { NumberUnitProps } from '../../type'
 import componentConfig from '../../componentConfig'
 
 export default defineComponent({
